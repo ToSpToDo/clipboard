@@ -35,7 +35,7 @@ function execCommandFunc() {
 
 function clipboardFunc() {
     let clipboard = new ClipboardJS('#clipboardBtn');
-
+    alert('clipboardBtn');
     clipboard.on('success', function(e) {
         alert(e.text);
         alert(`Text:, ${e.text}`);
