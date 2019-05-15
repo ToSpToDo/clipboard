@@ -38,7 +38,7 @@ function clipboardFunc() {
 
     clipboard.on('success', function(e) {
         console.info('Action:', e.action);
-        alert('Text:', e.text);
+        alert(`Text:, ${e.text}`);
         console.info('Trigger:', e.trigger);
 
         e.clearSelection();
