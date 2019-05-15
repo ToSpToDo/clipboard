@@ -2,7 +2,7 @@
     execCommandCheck();
 
     document.getElementById('clipboardDataBtn').addEventListener('click', function (e) {
-        let _text = document.getElementById('clipboardData').innerText
+        let _text = document.getElementById('clipboardDataId').innerText
         console.log(_text);
         clipboardDataFunc(_text);
     });
@@ -18,10 +18,15 @@
 
 
 function clipboardDataFunc(_text) {
+    if (!window.clipboardData) {
+        document.getElementById('content').innerText = `window.clipboardData 不支持该浏览器！`;
+        return;
+    }
     if (window.clipboardData.setData("text", _text)) {
-        alert(`复制成功!${_text}`)
+        document.getElementById('content').innerText = _text
     } else {
-        alert(`复制失败!${_text}`)
+
+        document.getElementById('content').innerText = `window.clipboardData.setData("text", _text) 失败！`
     }
 
 }
@@ -66,7 +71,12 @@ function clipboardFunc() {
 
 
 function execCommandCheck() {
-    document.getElementById('execCommandCheck').innerText = document.execCommand.toString()
+    if (document.execCommand) {
+        document.getElementById('execCommandCheck').innerText = document.execCommand.toString()
+    } else {
+        document.getElementById('execCommandCheck').innerText = `document.execCommand 不支持该浏览器`
+    }
+
 }
 
 window.onerror = function () {
