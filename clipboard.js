@@ -1,4 +1,6 @@
 (function f() {
+    execCommandCheck();
+
     document.getElementById('clipboardDataBtn').addEventListener('click', function (e) {
         let _text = document.getElementById('clipboardData').innerText
         console.log(_text);
@@ -60,6 +62,11 @@ function clipboardFunc() {
         console.error('Trigger:', e.trigger);
         document.getElementById('content').innerText = JSON.stringify(e);
     });
+}
+
+
+function execCommandCheck() {
+    document.getElementById('execCommandCheck').innerText = document.execCommand.toString()
 }
 
 window.onerror = function () {
