@@ -6,8 +6,7 @@
     });
 
     document.getElementById('execCommandBtn').addEventListener('click', function (e) {
-        let _text = document.getElementById('execCommand').innerText
-        console.log(_text);
+        let _text = document.getElementById('execCommand')
         execCommandFunc(_text);
     })
 
@@ -26,14 +25,32 @@ function clipboardDataFunc(_text) {
 }
 
 
-function execCommandFunc() {
+function execCommandFunc(node) {
+    let range = document.createRange();
+    range.selectNode(node);
+    window.getSelection().addRange(range);
+
+    try {
+        // Now that we've selected the anchor text, execute the copy command
+        let successFlag = document.execCommand('copy');
+
+        console.log('Copy email command was ' + successFlag);
+        document.getElementById('content').innerText = JSON.stringify(successFlag);
+    } catch (err) {
+        console.log('Oops, unable to copy');
+        document.getElementById('content').innerText = JSON.stringify(err);
+    }
+
+    // Remove the selections - NOTE: Should use
+    // removeRange(range) when it is supported
+    window.getSelection().removeAllRanges();
 
 }
 
 function clipboardFunc() {
     let clipboard = new ClipboardJS('#clipboardBtn');
     clipboard.on('success', function (e) {
-        document.getElementById('content').innerText = JSON.stringify(e);//e.text;
+        document.getElementById('content').innerText = JSON.stringify(e);
 
         e.clearSelection();
     });
@@ -45,6 +62,6 @@ function clipboardFunc() {
     });
 }
 
-window.onerror=function () {
-    document.getElementById('err').innerText=JSON.stringify(arguments);
+window.onerror = function () {
+    document.getElementById('err').innerText = JSON.stringify(arguments);
 }
