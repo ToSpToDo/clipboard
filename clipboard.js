@@ -27,25 +27,23 @@ function clipboardDataFunc(_text) {
 
 
 function execCommandFunc() {
-    let obj=document.getElementById('execCommand');
+    let obj = document.getElementById('execCommand');
     obj.select();
-    let js=obj.createTextRange();
+    let js = obj.createTextRange();
     js.execCommand("Copy");
 }
 
 function clipboardFunc() {
     let clipboard = new ClipboardJS('#clipboardBtn');
-    alert('clipboardBtn');
-    clipboard.on('success', function(e) {
-        alert(e.text);
-        alert(`Text:, ${e.text}`);
-        console.info('Trigger:', e.trigger);
+    clipboard.on('success', function (e) {
+        document.getElementById('content').innerText = JSON.stringify(e);//e.text;
 
         e.clearSelection();
     });
 
-    clipboard.on('error', function(e) {
+    clipboard.on('error', function (e) {
         console.error('Action:', e.action);
         console.error('Trigger:', e.trigger);
+        document.getElementById('content').innerText = JSON.stringify(e);
     });
 }
