@@ -74,7 +74,7 @@ function execCommandCheck() {
     if (document.execCommand) {
         document.getElementById('execCommandCheck').innerText = document.execCommand.toString()
     } else {
-        document.getElementById('execCommandCheck').innerText = `document.execCommand 不支持该浏览器`
+        document.getElementById('execCommandCheck').innerText = 'document.execCommand 不支持该浏览器'
     }
 
 }
