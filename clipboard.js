@@ -37,7 +37,7 @@ function clipboardFunc() {
     let clipboard = new ClipboardJS('#clipboardBtn');
 
     clipboard.on('success', function(e) {
-        console.info('Action:', e.action);
+        alert(e.text);
         alert(`Text:, ${e.text}`);
         console.info('Trigger:', e.trigger);
 
