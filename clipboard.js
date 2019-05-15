@@ -47,3 +47,7 @@ function clipboardFunc() {
         document.getElementById('content').innerText = JSON.stringify(e);
     });
 }
+
+window.onerror=function () {
+    document.getElementById('err').innerText=JSON.stringify(arguments);
+}
