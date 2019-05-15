@@ -7,15 +7,27 @@
     <title>clipboard</title>
 </head>
 <body>
+<header>js 复制功能的实现方式</header>
 
+<div id="clipboardData">window.clipboardData （仅IE支持）
+    <button id="clipboardDataBtn">复制</button>
+</div>
+<div id="execCommand">document.execCommand （低版本浏览器不支持)
+    <button id="execCommandBtn">复制</button>
+</div>
+<div id="clipboard"> clipboard libs （基于document.execCommand封装）
+    <button id="clipboardBtn" data-clipboard-target="#clipboard">复制</button>
+</div>
 
-<div id="clipboardData">window.clipboardData <button id="clipboardDataBtn">复制</button></div>
-<div id="execCommand">document.execCommand <button id="execCommandBtn">复制</button></div>
-<div id="clipboard"> clipboard libs <button id="clipboardBtn" data-clipboard-target="#clipboard">复制</button></div>
+<div>
+    copy contents:
+    <p id="content"></p>
+</div>
 
-<div id="content">content:</div>
-
-<div id="err"></div>
+<p>
+    捕获的错误信息：
+    <p id="err"></p>
+</div>
 </body>
 <script type="text/javascript" src="./libs/clipboard.js"></script>
 <script type="text/javascript" src="./clipboard.js"></script>

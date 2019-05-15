@@ -27,10 +27,7 @@ function clipboardDataFunc(_text) {
 
 
 function execCommandFunc() {
-    let obj = document.getElementById('execCommand');
-    obj.select();
-    let js = obj.createTextRange();
-    js.execCommand("Copy");
+
 }
 
 function clipboardFunc() {
